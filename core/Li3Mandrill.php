@@ -41,7 +41,9 @@ class Li3Mandrill extends \lithium\core\StaticObject {
 
         foreach( array_keys( self::$config ) as $param ) {
             if( Environment::get( 'mandrill.' . $param ) ) {
-                self::$config[$param] = Environment::get( 'mandrill.' . $param );
+		$apiKeyArray = Environment::get( 'mandrill.' . $param );
+		$apiKey = $apiKeyArray[0];
+		self::$config[$param] = $apiKey;
             }
         }
 
